@@ -1,0 +1,15 @@
+<!--pages/wodetougao/wodetougao.wxml-->
+<view>
+<view wx:for="{{shareList}}" wx:for-item="share" class="share-item" data-item="{{share}}" bindtap="goDetail">
+<view wx:if="{{share.isOriginal==0}}" class="origin-label {{share.isOriginal==0? 'one':'two'}}">原创</view>
+<view wx:else class="origin-label {{share.isOriginal==0? 'one':'two'}}">转载</view>
+<image src="{{share.cover}}"></image>
+<view class="item-main" data-item="{{share}}" bindtap="goDetail">
+<text class="item-title">{{share.title}}</text>
+<wxs src="../../utils/sub.wxs" module="tools" />
+<text class="item-summary">{{tools.sub(share.summary)}}</text>
+</view>
+<view class="NOT_YET"  wx:if="{{share.auditStatus == 'NOT_YET'}}"></view>
+<text class="NOT_YET-text"  wx:if="{{share.auditStatus == 'NOT_YET'}}">待审核</text>
+</view>
+</view>
